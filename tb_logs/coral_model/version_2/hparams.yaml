@@ -1,0 +1,4 @@
+learning_rate: 0.001
+num_features: 8
+time_steps: 24
+wavelet_dim: 128
