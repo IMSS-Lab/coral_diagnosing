@@ -1,1 +1,1 @@
-# Duke-Coral-Health
+# Coral Bleaching Prediction System
