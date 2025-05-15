@@ -28,8 +28,8 @@ from tqdm import tqdm
 
 # Import models
 from models.cnn_lstm_attention import CoralNet as CNNLSTMModel
-from models.vision_transformer import DualTransformerModel 
-from models.temporal_convolutional import TCNCoralModel
+from models.vit import DualTransformerModel 
+from models.tcn import TCNCoralModel
 from models.xgboost_model import XGBoostCoralModel
 
 

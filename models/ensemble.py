@@ -26,8 +26,8 @@ import matplotlib.pyplot as plt
 
 # Import base models
 from cnn_lstm_attention import CoralNet as CNNLSTMModel
-from vision_transformer import DualTransformerModel
-from temporal_convolutional import TCNCoralModel
+from models.vit import DualTransformerModel
+from models.tcn import TCNCoralModel
 from xgboost_model import XGBoostCoralModel, FeatureExtractor
 
 

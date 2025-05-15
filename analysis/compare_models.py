@@ -29,10 +29,10 @@ from sklearn.metrics import (
 
 # Import models
 from models.cnn_lstm_attention import CoralNet as CNNLSTMModel
-from models.vision_transformer import DualTransformerModel 
-from models.temporal_convolutional import TCNCoralModel
+from models.vit import DualTransformerModel 
+from models.tcn import TCNCoralModel
 from models.xgboost_model import XGBoostCoralModel
-from models.ensemble_model import EnsembleModel
+from models.ensemble import EnsembleModel
 
 
 class ModelEvaluator:
