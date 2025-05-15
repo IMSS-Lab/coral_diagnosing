@@ -56,6 +56,9 @@ class FeatureExtractor:
         self.wavelet_name = wavelet_name
         self.wavelet_level = wavelet_level
         
+        # Set device first before initializing CNN
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        
         # Initialize CNN feature extractor
         self.initialize_image_extractor(pretrained_backbone)
         
@@ -69,8 +72,6 @@ class FeatureExtractor:
         self.wavelet_feature_names = [
             'wavelet_mean', 'wavelet_std', 'wavelet_energy', 'wavelet_entropy'
         ]
-        
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     def initialize_image_extractor(self, backbone_name: str):
         """
@@ -215,13 +216,14 @@ class FeatureExtractor:
             time_series: Time series data of shape [num_samples, time_steps, num_features]
             
         Returns:
-            Wavelet features of shape [num_samples, num_features * num_wavelet_features * wavelet_level]
+            Wavelet features of shape [num_samples, num_features * num_wavelet_features * (wavelet_level+1)]
         """
         num_samples, time_steps, num_features = time_series.shape
         num_wavelet_features = len(self.wavelet_feature_names)
         
-        # Initialize feature array
-        features = np.zeros((num_samples, num_features * num_wavelet_features * self.wavelet_level))
+        # Initialize feature array - pywt.wavedec returns wavelet_level + 1 coefficient arrays
+        # (approximation coefficients + detail coefficients for each level)
+        features = np.zeros((num_samples, num_features * num_wavelet_features * (self.wavelet_level + 1)))
         
         for i in range(num_samples):
             feature_idx = 0
