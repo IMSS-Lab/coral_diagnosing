@@ -1,10 +1,10 @@
 data:
-  data_dir: ./data
-  processed_dir: ./data/processed
+  data_dir: './data'
+  processed_dir: './data/processed_data/integrated'
   random_seed: 42
   results_dir: ./results
   test_size: 0.2
-  use_cached_data: true
+  use_cached_data: false
   val_size: 0.2
 early_warning:
   detrend: true

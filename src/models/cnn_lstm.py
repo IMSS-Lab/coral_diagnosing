@@ -22,6 +22,8 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import cv2
 
+from .wavelet import WaveletTransform
+
 
 class SelfAttention(nn.Module):
     """

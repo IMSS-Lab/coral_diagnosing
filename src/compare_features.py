@@ -27,10 +27,10 @@ import xgboost as xgb
 from tqdm import tqdm
 
 # Import models
-from models.cnn_lstm_attention import CoralNet as CNNLSTMModel
-from models.vit import DualTransformerModel 
-from models.tcn import TCNCoralModel
-from models.xgboost_model import XGBoostCoralModel
+from src.models.cnn_lstm import CoralLightningModel as CNNLSTMModel
+from src.models.vit import CoralTransformerLightning as TransformerModel
+from src.models.tcn import TCNLightningModel as TCNModel
+from src.models.xgb import XGBoostCoralModel
 
 
 class FeatureAnalyzer:

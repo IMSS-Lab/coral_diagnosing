@@ -27,12 +27,12 @@ from sklearn.metrics import (
     average_precision_score
 )
 
-# Import models
-from models.cnn_lstm_attention import CoralNet as CNNLSTMModel
-from models.vit import DualTransformerModel 
-from models.tcn import TCNCoralModel
-from models.xgboost_model import XGBoostCoralModel
-from models.ensemble import EnsembleModel
+# Import model modules
+from models.cnn_lstm import CoralLightningModel as CNNLSTMModel
+from models.tcn import TCNLightningModel as TCNModel
+from models.vit import CoralTransformerLightning as TransformerModel
+from models.xgb import XGBoostCoralModel
+from models.ensemble import EnsembleLightningModel as EnsembleModel
 
 
 class ModelEvaluator:
@@ -78,13 +78,13 @@ class ModelEvaluator:
                     **config.get('optimizer_params', {'lr': 0.001})
                 )
             elif model_name == 'transformer':
-                self.models[model_name] = DualTransformerModel(**config['model_params']).to(device)
+                self.models[model_name] = TransformerModel(**config['model_params']).to(device)
                 self.optimizers[model_name] = torch.optim.AdamW(
                     self.models[model_name].parameters(), 
                     **config.get('optimizer_params', {'lr': 0.001})
                 )
             elif model_name == 'tcn':
-                self.models[model_name] = TCNCoralModel(**config['model_params']).to(device)
+                self.models[model_name] = TCNModel(**config['model_params']).to(device)
                 self.optimizers[model_name] = torch.optim.AdamW(
                     self.models[model_name].parameters(), 
                     **config.get('optimizer_params', {'lr': 0.001})

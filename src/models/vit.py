@@ -21,6 +21,8 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import matplotlib.pyplot as plt
 import cv2
 
+from .wavelet import WaveletTransform
+
 
 class PatchEmbedding(nn.Module):
     """
