@@ -1,25 +1,47 @@
-numpy>=1.20.0
+# Core Machine Learning & Deep Learning
+torch>=2.2.0
+torchvision>=0.17.0
+torchaudio>=2.2.0
+pytorch-lightning>=2.2.0
+torchmetrics>=1.3.0 # For metrics in PyTorch Lightning
+
+# Data Handling & Numerics
 pandas>=1.3.0
-matplotlib>=3.4.0
-scikit-learn>=1.0.0
-torch>=1.10.0
-torchvision>=0.11.0
-xgboost>=1.5.0
-pyyaml>=6.0
+polars>=0.15.0 # For fast dataframes, used in preprocessing
+numpy>=1.20.0
 scipy>=1.7.0
-tqdm>=4.62.0
+
+# Machine Learning Models & Utilities
+scikit-learn>=1.0.0
+xgboost>=1.5.0
+einops>=0.4.0 # For Vision Transformer and potentially others
+pywavelets>=1.2.0 # For wavelet features
+statsmodels>=0.13.0 # For ACF/PACF in early_warning_detection
+
+# Image Processing
+opencv-python>=4.5.0 # cv2 for image loading/processing
+
+# Plotting & Visualization
+matplotlib>=3.4.0
 seaborn>=0.11.0
-pillow>=8.3.0
-statsmodels>=0.13.0
-jupyter>=1.0.0
-joblib>=1.1.0
-scikit-image>=0.18.0
-pyarrow>=6.0.0
-h5py>=3.6.0
-netCDF4>=1.5.8
-openpyxl>=3.0.9
-PyWavelets>=1.1.1
-opencv-python>=4.5.0
-polars>=0.15.0
-pytorch-lightning>=1.5.0
+
+# SHAP for model interpretability (used in xgb.py)
 shap>=0.40.0
+
+# ERDDAP for data downloading (used in data_downloader.py)
+erddapy>=1.1.0
+xarray>=0.20.0 # Dependency for erddapy, netCDF handling
+
+# STAC and Planetary Computer for "real_project" data downloader
+pystac-client>=0.7.0
+planetary-computer>=0.6.0 # For accessing Microsoft Planetary Computer
+rioxarray>=0.10.0 # For reading geospatial raster data (e.g., Sentinel from Planetary Computer)
+
+# Utilities
+tqdm>=4.60.0 # For progress bars
+requests>=2.25.0 # For downloading generic images in data_downloader.py
+
+# Optional, but good for some environments or advanced features:
+# jupyterlab # If you plan to use notebooks
+# h5py # For saving/loading some model formats or large datasets
+# netcdf4 # If directly working with netCDF files beyond what xarray handles easily

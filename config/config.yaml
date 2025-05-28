@@ -1,0 +1,50 @@
+data:
+  data_dir: ./data
+  processed_dir: ./data/processed
+  random_seed: 42
+  results_dir: ./results
+  test_size: 0.2
+  use_cached_data: true
+  val_size: 0.2
+early_warning:
+  detrend: true
+  smoothing: true
+  window_size: 5
+features:
+  feature_selection: true
+  feature_selection_method: mutual_info
+  num_features: 50
+models:
+  batch_size: 16
+  early_stopping: true
+  learning_rate: 0.001
+  model_configs:
+    cnn_lstm:
+      backbone: resnet18
+      dropout: 0.3
+      enabled: true
+      hidden_dim: 64
+    ensemble:
+      enabled: false
+    tcn:
+      enabled: true
+      hidden_dims:
+      - 64
+      - 128
+      kernel_size: 3
+    transformer:
+      embed_dim: 384
+      enabled: false
+      num_heads: 8
+      temporal_depth: 2
+      vision_depth: 4
+    xgboost:
+      enabled: true
+      learning_rate: 0.1
+      max_depth: 4
+      n_estimators: 50
+  num_epochs: 10
+  use_wavelet: true
+  weight_decay: 0.0001
+visualization:
+  save_visualizations: true
