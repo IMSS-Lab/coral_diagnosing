@@ -115,6 +115,13 @@ def prepare_data(config: Dict[str, Any], logger: logging.Logger) -> Tuple[Dict, 
     data_dir = config['data']['data_dir']
     processed_dir = config['data']['processed_dir']
     
+    # Create all necessary directories
+    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(processed_dir, exist_ok=True)
+    os.makedirs(os.path.join(processed_dir, 'integrated'), exist_ok=True)
+    os.makedirs(os.path.join(data_dir, 'processed_data'), exist_ok=True)
+    os.makedirs(os.path.join(data_dir, 'processed_data', 'integrated'), exist_ok=True)
+    
     # Check if processed data already exists
     if config['data']['use_cached_data'] and os.path.exists(processed_dir):
         logger.info("Loading cached processed data...")
